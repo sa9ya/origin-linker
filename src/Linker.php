@@ -27,7 +27,7 @@ class Linker
             throw new LinkerException('Cannot call sendToParent(): this config has no parent section.');
         }
 
-        $payload->setSource($this->config->apiKey());
+        $payload->setSource($this->config->selfDomain());
 
         return $this->http->post(
             $this->config->parentUrl(),
@@ -44,7 +44,7 @@ class Linker
 
         $child = $this->config->child($slug); // throws LinkerException if unknown
 
-        $payload->setSource($this->config->apiKey());
+        $payload->setSource($this->config->selfDomain());
 
         return $this->http->post(
             $child['url'],

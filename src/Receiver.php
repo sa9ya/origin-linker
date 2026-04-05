@@ -86,8 +86,12 @@ class Receiver
 
     private function authenticateAsChild(string $apiKey): ?Response
     {
-        if ($this->config->parentApiKey() !== $apiKey) {
-            return Response::error(401, 'Unauthorized.');
+        try {
+            if ($this->config->parentApiKey() !== $apiKey) {
+                return Response::error(401, 'Unauthorized.');
+            }
+        } catch (\Throwable) {
+            return Response::error(500, 'Server configuration error.');
         }
         return null;
     }

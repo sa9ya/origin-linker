@@ -105,7 +105,7 @@ class LinkerTest extends TestCase
         $linker = new Linker($this->childConfig, $mock);
         $response = $linker->sendToParent($this->cleaningPayload);
         $this->assertTrue($response->isOk());
-        // payload source is set to the sender's api_key before sending
-        $this->assertSame('child-cleaning-key', $this->cleaningPayload->source());
+        // payload source is set to the sender's domain before sending
+        $this->assertSame('cleaning.example.com', $this->cleaningPayload->source());
     }
 }

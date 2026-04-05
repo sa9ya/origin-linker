@@ -47,8 +47,8 @@ class HttpClient implements HttpClientInterface
             } catch (RequestException $e) {
                 // HTTP error response (4xx, 5xx) — no retry
                 $code = $e->getResponse()?->getStatusCode() ?? 0;
-                $body = $e->getResponse() ? json_decode((string) $e->getResponse()->getBody(), true) : [];
-                $message = (string) ($body['message'] ?? $e->getMessage());
+                $errorBody = $e->getResponse() ? json_decode((string) $e->getResponse()->getBody(), true) : [];
+                $message = (string) ($errorBody['message'] ?? $e->getMessage());
                 return Response::error($code, $message);
             }
         }
