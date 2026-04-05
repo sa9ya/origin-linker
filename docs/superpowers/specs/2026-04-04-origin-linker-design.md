@@ -128,6 +128,7 @@ return [
 ```php
 return [
     'api_key' => 'child-cleaning-key',
+    'domain'  => 'cleaning.example.com',
     'parent'  => [
         'url'     => 'https://main.example.com/linker',
         'api_key' => 'parent-secret-key',
