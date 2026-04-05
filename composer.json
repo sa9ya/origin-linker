@@ -1,0 +1,23 @@
+{
+    "name": "origin/linker",
+    "description": "Framework-agnostic PHP library for connecting parent and child projects via HTTP",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Origin\\Linker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Origin\\Linker\\Tests\\": "tests/"
+        }
+    }
+}

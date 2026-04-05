@@ -77,7 +77,7 @@ Wraps Guzzle. Implements retry only on network-level exceptions (connection refu
 $response->isOk(): bool
 $response->statusCode(): int
 $response->payload(): BasePayload|null
-$response->error(): string|null
+$response->errorMessage(): string|null
 $response->toArray(): array   // {"status":"ok|error","message":"...","data":{}}
 ```
 
@@ -239,7 +239,7 @@ $response = $linker->sendToParent(new CleaningPayload([
 if ($response->isOk()) {
     // success
 } else {
-    error_log($response->error());
+    error_log($response->errorMessage());
 }
 ```
 
