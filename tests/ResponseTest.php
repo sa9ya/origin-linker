@@ -14,7 +14,7 @@ class ResponseTest extends TestCase
         $response = Response::ok(200, 'Success');
         $this->assertTrue($response->isOk());
         $this->assertSame(200, $response->statusCode());
-        $this->assertNull($response->error());
+        $this->assertNull($response->errorMessage());
         $this->assertSame(['status' => 'ok', 'message' => 'Success', 'data' => []], $response->toArray());
     }
 
@@ -23,7 +23,7 @@ class ResponseTest extends TestCase
         $response = Response::error(500, 'Internal error');
         $this->assertFalse($response->isOk());
         $this->assertSame(500, $response->statusCode());
-        $this->assertSame('Internal error', $response->error());
+        $this->assertSame('Internal error', $response->errorMessage());
         $this->assertSame(['status' => 'error', 'message' => 'Internal error', 'data' => []], $response->toArray());
     }
 

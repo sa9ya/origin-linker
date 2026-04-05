@@ -21,12 +21,9 @@ class Response
         return new self(true, $code, $message, $data, $payload);
     }
 
-    public static function __callStatic(string $name, array $arguments): self
+    public static function error(int $code, string $message): self
     {
-        if ($name === 'error') {
-            return new self(false, $arguments[0], $arguments[1]);
-        }
-        throw new \BadMethodCallException("Static method $name does not exist");
+        return new self(false, $code, $message);
     }
 
     public function isOk(): bool
@@ -39,12 +36,9 @@ class Response
         return $this->code;
     }
 
-    public function __call(string $name, array $arguments): ?string
+    public function errorMessage(): ?string
     {
-        if ($name === 'error') {
-            return $this->ok ? null : $this->message;
-        }
-        throw new \BadMethodCallException("Method $name does not exist");
+        return $this->ok ? null : $this->message;
     }
 
     public function payload(): ?BasePayload
